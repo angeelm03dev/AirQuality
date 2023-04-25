@@ -14,16 +14,10 @@ import com.angel.airquality.view.externalSensorsScreen.ExternalSensorsScreen
 import com.angel.airquality.view.localSensorsScreen.LocalSensorsScreen
 import com.angel.airquality.view.newsScreen.NewsScreen
 
-open class Screen {
-    object Screen1 : Screen()
-    object Screen2 : Screen()
-    object Screen3 : Screen()
-}
-
 @Composable
 fun HomeScreen(screensNavController: NavHostController) {
-    var screen: Screen = Screen.Screen1
-    var currentScreen by remember {mutableStateOf(screen)}
+    var screen: Screen = Screen.LocalSensors
+    var currentScreen by remember { mutableStateOf(screen) }
 
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
@@ -32,58 +26,67 @@ fun HomeScreen(screensNavController: NavHostController) {
         scaffoldState = scaffoldState,
         bottomBar = {
             BottomAppBar {
-                Row(
-                    horizontalArrangement = Arrangement.SpaceAround,
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    IconButton(onClick = { currentScreen = Screen.Screen1 }) {
+                BottomNavigationItem(
+                    selected = currentScreen == Screen.LocalSensors,
+                    icon = {
                         Icon(
-                            Icons.Filled.Home,
+                            imageVector = Icons.Filled.Home,
                             contentDescription = "Sensores propios",
                             modifier = Modifier.size(24.dp)
                         )
-                    }
-                    IconButton(onClick = { currentScreen = Screen.Screen2 }) {
+                    },
+                    onClick = { currentScreen = Screen.LocalSensors },
+                    label = { Text("Local") }
+                )
+                BottomNavigationItem(
+                    selected = currentScreen == Screen.ExternalSensors,
+                    icon = {
                         Icon(
                             painterResource(R.drawable.location_city),
                             contentDescription = "Estaciones estatales",
                             modifier = Modifier.size(24.dp)
                         )
-                    }
-                    IconButton(onClick = { currentScreen = Screen.Screen3 }) {
+                    },
+                    onClick = { currentScreen = Screen.ExternalSensors },
+                    label = { Text("External") }
+                )
+                BottomNavigationItem(
+                    selected = currentScreen == Screen.NewsSensors,
+                    icon = {
                         Icon(
                             painterResource(R.drawable.newspaper),
                             contentDescription = "Noticias",
                             modifier = Modifier.size(24.dp)
                         )
-                    }
-                }
+                    },
+                    onClick = { currentScreen = Screen.NewsSensors },
+                    label = { Text("News") }
+                )
             }
         },
-        topBar = { MyTopAppBar(scope, scaffoldState, title = "Mi pantalla") },
+        topBar = { MyTopAppBar(scope, scaffoldState, title = currentScreen.title) },
         drawerContent = {
             Drawer(
                 scope,
                 scaffoldState,
                 screensNavController
             )
-        },
-        floatingActionButton = {
-            FloatingActionButton(onClick = { /* ... */ }) {
-                Icon(Icons.Filled.Add, contentDescription = "Noticias")
-            }
         }
-    ) {innerPadding ->
+    ) { innerPadding ->
         when (currentScreen) {
-            is Screen.Screen1 -> {
+            is Screen.LocalSensors -> {
                 LocalSensorsScreen(innerPadding)
             }
-            is Screen.Screen2 -> {
+
+            is Screen.ExternalSensors -> {
                 ExternalSensorsScreen(innerPadding)
             }
-            is Screen.Screen3 -> {
+
+            is Screen.NewsSensors -> {
                 NewsScreen(innerPadding)
             }
+
+            else -> {}
         }
     }
 

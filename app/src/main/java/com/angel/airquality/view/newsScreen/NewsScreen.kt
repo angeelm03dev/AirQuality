@@ -1,15 +1,12 @@
 package com.angel.airquality.view.newsScreen
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 
 @Composable
 fun NewsScreen(innerPadding : PaddingValues) {
@@ -18,9 +15,13 @@ fun NewsScreen(innerPadding : PaddingValues) {
         modifier = Modifier
             .fillMaxSize()
             .padding(innerPadding)
-            .padding(16.dp)
     ) {
-        Text(text = "Últimas noticias")
+        //En este punto conectariamos con el viewModel para consultar a la API
+        LazyColumn {
+            items(20){
+                NewsBox()
+            }
+        }
     }
 
 }

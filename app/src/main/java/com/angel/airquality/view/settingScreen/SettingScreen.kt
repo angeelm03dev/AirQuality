@@ -5,6 +5,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -42,10 +43,10 @@ fun SettingScreen(navController: NavHostController) {
         }
 
     ) { padding ->
-        Column(modifier = Modifier.padding(padding)) {
-            Text("Tema oscuro",style = MaterialTheme.typography.button)
-            Text("API de noticias",style = MaterialTheme.typography.button)
-            Text("Seguridad",style = MaterialTheme.typography.button)
+        Row(modifier = Modifier.padding(padding).padding(25.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text("Appearance")
+            Spacer(modifier = Modifier.width(20.dp))
+            SelectTheme()
         }
     }
 
