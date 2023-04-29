@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AirQuality</string>
+
+    <string name="api_key">a9b860f979eaae7adbf76bcdb7bdb683</string>
 </resources>

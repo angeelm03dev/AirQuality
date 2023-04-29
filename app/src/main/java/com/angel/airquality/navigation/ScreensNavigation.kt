@@ -11,7 +11,7 @@ import com.angel.airquality.view.settingScreen.SettingScreen
 import com.angel.airquality.view.splashScreen.SplashScreen
 
 @Composable
-fun ScreensNavigation(navController: NavHostController){
+fun ScreensNavigation(context: MainActivity, navController: NavHostController){
 
     NavHost(navController = navController, startDestination = AppScreens.Splash.ruta){
         composable(AppScreens.Splash.ruta){
@@ -24,7 +24,7 @@ fun ScreensNavigation(navController: NavHostController){
             InfoScreen(navController)
         }
         composable(AppScreens.Home.ruta){
-            HomeScreen(navController)
+            HomeScreen(context, navController)
         }
     }
 

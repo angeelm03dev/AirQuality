@@ -9,13 +9,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.angel.airquality.MainActivity
 import com.angel.airquality.R
 import com.angel.airquality.view.externalSensorsScreen.ExternalSensorsScreen
 import com.angel.airquality.view.localSensorsScreen.LocalSensorsScreen
 import com.angel.airquality.view.newsScreen.NewsScreen
 
 @Composable
-fun HomeScreen(screensNavController: NavHostController) {
+fun HomeScreen(context: MainActivity, screensNavController: NavHostController) {
     var screen: Screen = Screen.LocalSensors
     var currentScreen by remember { mutableStateOf(screen) }
 
@@ -83,7 +84,7 @@ fun HomeScreen(screensNavController: NavHostController) {
             }
 
             is Screen.NewsSensors -> {
-                NewsScreen(innerPadding)
+                NewsScreen(context, innerPadding)
             }
 
             else -> {}

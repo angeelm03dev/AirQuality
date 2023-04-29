@@ -7,5 +7,9 @@ import retrofit2.http.Query
 
 interface APIService {
     @GET("/v1/news")
-    fun getNews(@Query("access_key") access_key: String, @Query("countries") countries: String): Call<NewsData>
+    fun getNews(
+        @Query("access_key") access_key: String,
+        @Query("countries") countries: String,
+        @Query("keywords") keywords: String
+    ): Call<NewsData>
 }
