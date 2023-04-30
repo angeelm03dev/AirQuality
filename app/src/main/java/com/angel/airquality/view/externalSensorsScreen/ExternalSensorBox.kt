@@ -16,6 +16,7 @@ fun ExternalSensorBox(location: String) {
         .background(Color.Gray)) {
 
         Text(location)
+        Text("Aquí irian los datos relacionados con la contaminación")
     }
 }
 
