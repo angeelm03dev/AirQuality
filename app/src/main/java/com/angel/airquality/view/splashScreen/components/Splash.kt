@@ -1,4 +1,4 @@
-package com.angel.airquality.view.splashScreen
+package com.angel.airquality.view.splashScreen.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

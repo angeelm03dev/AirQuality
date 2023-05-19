@@ -1,4 +1,4 @@
-package com.angel.airquality.view.homeScreen
+package com.angel.airquality.view.homeScreen.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

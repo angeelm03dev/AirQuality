@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.angel.airquality.MainActivity
+import com.angel.airquality.view.newsScreen.components.NewsBox
 import com.angel.airquality.viewModel.NewsViewModel
 
 @Composable

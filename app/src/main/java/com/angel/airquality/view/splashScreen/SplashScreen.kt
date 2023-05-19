@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavController
 import com.angel.airquality.navigation.AppScreens
+import com.angel.airquality.view.splashScreen.components.Splash
 import kotlinx.coroutines.delay
 
 @Composable

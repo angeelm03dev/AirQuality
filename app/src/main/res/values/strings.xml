@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">AirQuality</string>
 
-    <string name="api_key">a9b860f979eaae7adbf76bcdb7bdb683</string>
+    <string name="api_news_key">a9b860f979eaae7adbf76bcdb7bdb683</string>
+    <string name="api_pollution_key">471cc665254f8d26ac2fa513f249e2b2868bf7ef</string>
 </resources>

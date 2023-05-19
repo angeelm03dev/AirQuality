@@ -13,6 +13,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.angel.airquality.view.settingScreen.components.SelectTheme
 
 @Composable
 fun SettingScreen(navController: NavHostController) {

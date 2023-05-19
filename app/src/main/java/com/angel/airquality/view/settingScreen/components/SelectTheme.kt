@@ -1,4 +1,4 @@
-package com.angel.airquality.view.settingScreen
+package com.angel.airquality.view.settingScreen.components
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.DropdownMenuItem

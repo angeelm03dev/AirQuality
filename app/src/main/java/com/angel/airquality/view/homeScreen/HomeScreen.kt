@@ -12,6 +12,8 @@ import androidx.navigation.NavHostController
 import com.angel.airquality.MainActivity
 import com.angel.airquality.R
 import com.angel.airquality.view.externalSensorsScreen.ExternalSensorsScreen
+import com.angel.airquality.view.homeScreen.components.Drawer
+import com.angel.airquality.view.homeScreen.components.MyTopAppBar
 import com.angel.airquality.view.localSensorsScreen.LocalSensorsScreen
 import com.angel.airquality.view.newsScreen.NewsScreen
 

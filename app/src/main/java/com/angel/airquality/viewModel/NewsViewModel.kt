@@ -39,7 +39,7 @@ class NewsViewModel() : ViewModel() {
             CoroutineScope(Dispatchers.IO).launch {
 
                 val call = getRetrofit().create(APIService::class.java).getNews(
-                    access_key = context.getString(R.string.api_key),
+                    access_key = context.getString(R.string.api_news_key),
                     keywords = "contaminación",
                     countries = "es"
                 )
