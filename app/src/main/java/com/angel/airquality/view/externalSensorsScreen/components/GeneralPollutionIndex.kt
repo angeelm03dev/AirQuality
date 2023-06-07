@@ -16,10 +16,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun GeneralPollutionIndex(location: String) {
+fun GeneralPollutionIndex(value: Float, location: String) {
+    val alertLevelColor = when (value) {
+        in 0.0..50.0 -> Color(0xFF009866)
+        in 51.0..100.0 -> Color(0xFFFEDD33)
+        in 101.0..150.0 -> Color(0xFFFE9833)
+        in 151.0..200.0 -> Color(0xFFCB0033)
+        in 201.0..300.0 -> Color(0xFF660098)
+        else -> {
+            Color(0xFF7E0023)
+        }
+    }
+
     Column(modifier = Modifier.padding(5.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
-            location,
+            text = location,
             fontWeight = FontWeight.Medium,
             fontSize = 21.sp,
             modifier = Modifier
@@ -28,10 +39,10 @@ fun GeneralPollutionIndex(location: String) {
         )
         Box(
             modifier = Modifier
-                .background(color = Color.Yellow, shape = CircleShape)
+                .background(color = alertLevelColor, shape = CircleShape)
                 .size(100.dp)
         ) {
-            Text("24", modifier = Modifier.align(Alignment.Center))
+            Text(value.toString(), modifier = Modifier.align(Alignment.Center))
         }
 
     }

@@ -2,18 +2,20 @@ package com.angel.airquality.view.splashScreen
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.angel.airquality.navigation.AppScreens
+import com.angel.airquality.MainActivity
 import com.angel.airquality.view.splashScreen.components.Splash
-import kotlinx.coroutines.delay
+import com.angel.airquality.viewModel.SplashViewModel
 
 @Composable
-fun SplashScreen(navController: NavController){
+fun SplashScreen(context: MainActivity, navController: NavController){
+
+    val splashViewModel = viewModel<SplashViewModel>()
 
     LaunchedEffect(key1 = true){
-        delay(1500)
-        navController.popBackStack()
-        navController.navigate(AppScreens.Home.ruta)
+        splashViewModel.dataLoad(context = context, navController = navController)
+        //splashViewModel.searchPollutionNews(context = context)
     }
     Splash()
 }

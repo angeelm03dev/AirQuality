@@ -1,4 +1,4 @@
-package com.angel.airquality.model
+package com.angel.airquality.model.news
 
 import com.google.gson.annotations.SerializedName
 

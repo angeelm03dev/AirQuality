@@ -1,5 +1,6 @@
 package com.angel.airquality.view.settingScreen.components
 
+import android.content.Context
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.ExperimentalMaterialApi
@@ -14,10 +15,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.angel.airquality.GlobalVars
+import com.angel.airquality.MainActivity
+import com.angel.airquality.R
+import com.angel.airquality.viewModel.SettingsViewModel
+import kotlinx.coroutines.runBlocking
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun SelectTheme() {
+fun SelectTheme(context: MainActivity, settingsViewModel: SettingsViewModel) {
 
     val options = listOf("Dark theme", "Light theme", "Auto theme")
     var expanded by remember { mutableStateOf(false) }

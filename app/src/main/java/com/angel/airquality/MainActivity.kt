@@ -11,11 +11,11 @@ import androidx.navigation.compose.rememberNavController
 import com.angel.airquality.navigation.ScreensNavigation
 import com.angel.airquality.ui.theme.AirQualityTheme
 
-
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             AirQualityTheme {
                 // A surface container using the 'background' color from the theme
@@ -24,7 +24,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val navController = rememberNavController()
-
                     ScreensNavigation(context = this, navController = navController)
                 }
             }
