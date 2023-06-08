@@ -1,5 +1,6 @@
 package com.angel.airquality.view.externalSensorsScreen
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -36,7 +37,8 @@ fun ExternalSensorsScreen(
     val locationStatusAirQualitylist = remember { mutableStateListOf(LocationStatusAirQuality(null, null)) }
 
 
-    if (!openDialog.value){
+    if (!openDialog.value) {
+        Toast.makeText(context, "Acualizando datos", Toast.LENGTH_SHORT).show()
         externalSensorsViewModel.searchAirQualityLocations(
             locations = GlobalVars.locationsList,
             locationStatusAirQualityList = locationStatusAirQualitylist,
@@ -71,7 +73,11 @@ fun ExternalSensorsScreen(
             RoundFloatingButton(
                 imageVector = Icons.Default.Edit,
                 onClick = {
-                    openDialog.value = !openDialog.value
+                    if (locationStatusAirQualitylist.size == GlobalVars.locationsList.size){
+                        openDialog.value = !openDialog.value
+                    }else{
+                        Toast.makeText(context, "Cargando localizaciones. Espere un momento antes de poder editar", Toast.LENGTH_SHORT).show()
+                    }
                 },
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
@@ -82,6 +88,7 @@ fun ExternalSensorsScreen(
     if (openDialog.value) {
         EditDialog(context, openDialog, externalSensorsViewModel)
     }
+
 }
 
 @Composable

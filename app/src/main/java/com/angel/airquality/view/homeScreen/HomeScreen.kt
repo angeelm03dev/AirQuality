@@ -12,6 +12,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.angel.airquality.MainActivity
 import com.angel.airquality.R
+import com.angel.airquality.model.airQualityOpenData.LocationStatusAirQuality
 import com.angel.airquality.view.externalSensorsScreen.ExternalSensorsScreen
 import com.angel.airquality.view.homeScreen.components.Drawer
 import com.angel.airquality.view.homeScreen.components.MyTopAppBar
