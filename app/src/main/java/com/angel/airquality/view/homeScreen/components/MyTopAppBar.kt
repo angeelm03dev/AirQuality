@@ -1,7 +1,6 @@
 package com.angel.airquality.view.homeScreen.components
 
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -19,14 +18,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.angel.airquality.view.homeScreen.Screen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
-fun MyTopAppBar(scope: CoroutineScope, scaffoldState: ScaffoldState, title: String) {
+fun MyTopAppBar(
+    scope: CoroutineScope,
+    scaffoldState: ScaffoldState,
+    currentScreen: Screen
+) {
+
     TopAppBar(
         elevation = 4.dp,
-        backgroundColor = Color.White,
+        backgroundColor = Color(0xFF378CD3),
         modifier = Modifier.height(56.dp)
     ) {
         IconButton(onClick = { scope.launch { scaffoldState.drawerState.open() } }) {
@@ -38,8 +43,8 @@ fun MyTopAppBar(scope: CoroutineScope, scaffoldState: ScaffoldState, title: Stri
         }
         Spacer(modifier = Modifier.width(10.dp))
         Text(
-            text = title,
-            modifier = Modifier.fillMaxWidth(),
+            text = currentScreen.title,
+            modifier = Modifier,
             textAlign = TextAlign.Start,
             fontWeight = FontWeight.Bold,
             fontSize = 18.sp

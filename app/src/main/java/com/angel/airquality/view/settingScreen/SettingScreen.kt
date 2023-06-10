@@ -12,11 +12,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.angel.airquality.MainActivity
 import com.angel.airquality.view.settingScreen.components.SelectTheme
+import com.angel.airquality.viewModel.SettingsViewModel
 
 @Composable
-fun SettingScreen(navController: NavHostController) {
+fun SettingScreen(context: MainActivity, navController: NavHostController) {
+
+    val settingsViewModel = viewModel<SettingsViewModel>(context)
 
     Scaffold(
         topBar = {
@@ -47,7 +52,7 @@ fun SettingScreen(navController: NavHostController) {
         Row(modifier = Modifier.padding(padding).padding(25.dp), verticalAlignment = Alignment.CenterVertically) {
             Text("Appearance")
             Spacer(modifier = Modifier.width(20.dp))
-            SelectTheme()
+            SelectTheme(context = context, settingsViewModel = settingsViewModel)
         }
     }
 

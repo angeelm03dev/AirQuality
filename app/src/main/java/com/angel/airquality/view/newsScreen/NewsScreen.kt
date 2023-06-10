@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.angel.airquality.GlobalVars
 import com.angel.airquality.MainActivity
 import com.angel.airquality.view.newsScreen.components.NewsBox
 import com.angel.airquality.viewModel.NewsViewModel
@@ -23,10 +24,10 @@ fun NewsScreen(context: MainActivity, innerPadding: PaddingValues) {
             .padding(innerPadding)
     ) {
         //En este punto conectariamos con el viewModel para consultar a la API
-        newsViewModel.searchPollutionNews(context)
+        //newsViewModel.searchPollutionNews(context)
 
         LazyColumn {
-            newsViewModel.pollutionNews.forEach {
+            GlobalVars.pollutionNews.forEach {
                 item {
                     NewsBox(
                         title = it.title,
