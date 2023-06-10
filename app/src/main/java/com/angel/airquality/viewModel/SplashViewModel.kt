@@ -1,26 +1,16 @@
 package com.angel.airquality.viewModel
 
-import android.content.Context
 import android.util.Log
-import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.intPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import androidx.room.Room
 import com.angel.airquality.GlobalVars
 import com.angel.airquality.MainActivity
 import com.angel.airquality.R
 import com.angel.airquality.api.APIService
-import com.angel.airquality.database.AppDatabase
 import com.angel.airquality.navigation.AppScreens
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -40,26 +30,23 @@ class SplashViewModel : ViewModel(){
             .build()
     }
 
-    fun dataLoad(context: MainActivity, navController: NavController){
+
+    //Cargamos que localidades estan disponibles, segun su orden
+    fun loadLocationMap(context: MainActivity, navController: NavController){
         CoroutineScope(Dispatchers.IO).launch {
-            val db = Room.databaseBuilder(context, AppDatabase::class.java, "db_airquality.db")
-                .createFromAsset("database/db_airquality.db")
-                .fallbackToDestructiveMigration()
-                .build()
+            val locationDao = GlobalVars.db.userDao()
+            val locationsMap = locationDao.getLocationsWithIsActive()
 
-            val locationDao = db.userDao()
-            val locations = locationDao.getAll()
-
-            locations.forEach{
-                GlobalVars.locationsList += it
+            locationsMap.forEach{
+                GlobalVars.locationsMapList[it.location] = it.isActive
             }
-
             context.runOnUiThread {
                 navController.popBackStack()
                 navController.navigate(AppScreens.Home.ruta)
             }
         }
     }
+
 
     fun searchPollutionNews(context: MainActivity) {
         try {

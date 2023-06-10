@@ -7,17 +7,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.angel.airquality.viewModel.ExternalSensorsViewModel
 
 @Composable
-fun ListSavedLocations(locations: SnapshotStateList<String>) {
+fun ListLocations(locations: SnapshotStateList<String>, externalSensorsViewModel: ExternalSensorsViewModel) {
     LazyColumn(
         modifier = Modifier
-            .fillMaxHeight(0.40F)
+            .fillMaxHeight(0.45F)
             .background(color = Color.LightGray)
     ){
         locations.forEach {
             item {
-                ItemLocation(location = it, locations = locations)
+                ItemLocation(location = it, externalSensorsViewModel = externalSensorsViewModel)
             }
         }
     }

@@ -29,10 +29,9 @@ fun MyTopAppBar(
     currentScreen: Screen
 ) {
 
-
     TopAppBar(
         elevation = 4.dp,
-        backgroundColor = Color.White,
+        backgroundColor = Color(0xFF378CD3),
         modifier = Modifier.height(56.dp)
     ) {
         IconButton(onClick = { scope.launch { scaffoldState.drawerState.open() } }) {

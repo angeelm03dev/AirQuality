@@ -2,10 +2,10 @@ package com.angel.airquality.viewModel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.angel.airquality.GlobalVars
 import com.angel.airquality.MainActivity
 import com.angel.airquality.api.APIService
 import com.angel.airquality.model.airQualityOpenData.LocationStatusAirQuality
-import com.angel.airquality.model.airQualityOpenData.StatusAirQuality
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,16 +29,20 @@ class ExternalSensorsViewModel : ViewModel() {
             .build()
     }
 
-
     //Consultamos la calidad del aire en una determinada ciudad
     fun searchAirQualityLocations(
         context: MainActivity,
+        externalSensorsViewModel: ExternalSensorsViewModel,
         locationStatusAirQualityList: MutableList<LocationStatusAirQuality>,
-        locations: MutableList<String>
     ) {
+        //Obtenemos las localizaciones activadas
+        val locationsMap = GlobalVars.locationsMapList
+
         locationStatusAirQualityList.clear()
         try {
             CoroutineScope(Dispatchers.IO).launch {
+                val locations = GlobalVars.db.userDao().activeLocations()
+
                 locations.forEach { location ->
                     //Procesamos todas las localizaciones
                     val call = getRetrofit().create(APIService::class.java)
@@ -48,17 +52,38 @@ class ExternalSensorsViewModel : ViewModel() {
 
                     context.runOnUiThread {
                         if (statusAirQuality != null) {
-                            locationStatusAirQualityList.add(LocationStatusAirQuality(location, statusAirQuality))
+                            locationStatusAirQualityList.add(LocationStatusAirQuality(location,
+                                locationsMap[location]!!, statusAirQuality))
                         }
+                        externalSensorsViewModel.loadLocationMap()
                     }
                 }
             }
-
         } catch (ex: Exception) {
             Log.e(
                 "Excepcion API",
                 "Error al realizar la consulta a la API AirQuality Open Data.\n$ex"
             )
+        }
+    }
+
+    //Cargamos un Map<String, Int> con el nombre de la locaslización y un valor que indica si está activada o no
+    private fun loadLocationMap(){
+        CoroutineScope(Dispatchers.IO).launch {
+            val locationDao = GlobalVars.db.userDao()
+            val locationsMap = locationDao.getLocationsWithIsActive()
+
+            GlobalVars.locationsMapList.clear()
+            locationsMap.forEach{
+                GlobalVars.locationsMapList[it.location] = it.isActive
+            }
+        }
+    }
+
+    fun updateIsActive(location: String, isActive: Int){
+        CoroutineScope(Dispatchers.IO).launch {
+            val locationDao = GlobalVars.db.userDao()
+            locationDao.updateLocation(location = location, isActive = isActive)
         }
     }
 

@@ -29,9 +29,9 @@ fun Splash(){
             verticalArrangement = Arrangement.Center
         ) {
             Image(
-                painter = painterResource(R.drawable.ic_launcher_background),
+                painter = painterResource(R.drawable.logo_airquality),
                 contentDescription = null,
-                modifier = Modifier.size(100.dp),
+                modifier = Modifier.size(200.dp),
                 contentScale = ContentScale.Fit
             )
         }

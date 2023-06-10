@@ -24,6 +24,7 @@ import com.angel.airquality.viewModel.ExternalSensorsViewModel
 fun HomeScreen(context: MainActivity, screensNavController: NavHostController) {
     var screen: Screen = Screen.LocalSensors
     var currentScreen by remember { mutableStateOf(screen) }
+    val locationStatusAirQualitylist = remember { mutableStateListOf(LocationStatusAirQuality(null,1, null)) }
 
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
@@ -95,6 +96,7 @@ fun HomeScreen(context: MainActivity, screensNavController: NavHostController) {
             is Screen.ExternalSensors -> {
                 ExternalSensorsScreen(
                     context = context,
+                    locationStatusAirQualitylist,
                     externalSensorsViewModel,
                     innerPadding = innerPadding
                 )

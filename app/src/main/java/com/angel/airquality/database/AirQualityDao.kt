@@ -5,6 +5,17 @@ import androidx.room.Query
 
 @Dao
 interface AirQualityDao {
-    @Query("SELECT location FROM existing_locations")
-    fun getAll(): List<String>
+    @Query("SELECT locations.location, locations.isActive FROM locations")
+    fun getLocationsWithIsActive(): List<LocationData>
+
+    @Query("SELECT locations.location FROM locations WHERE locations.isActive = 1")
+    fun activeLocations(): List<String>
+
+    @Query("UPDATE locations SET isActive = :isActive WHERE location = :location")
+    fun updateLocation(location: String, isActive: Int)
 }
+
+data class LocationData(
+    val location: String,
+    val isActive: Int
+)
