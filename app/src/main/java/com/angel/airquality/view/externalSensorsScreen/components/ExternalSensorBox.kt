@@ -1,6 +1,7 @@
 package com.angel.airquality.view.externalSensorsScreen.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,9 +10,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.angel.airquality.model.airQualityOpenData.Data
@@ -20,8 +24,9 @@ import com.angel.airquality.model.airQualityOpenData.Data
 fun ExternalSensorBox(dataAirQuality: Data?, location: String, modifier: Modifier) {
     Row(
         modifier = modifier
+            .clip(RoundedCornerShape(15.dp))
+            .background(color = Color(0xFFE4CCA7))
             .fillMaxWidth()
-            .background(Color.LightGray)
             .padding(15.dp),
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically

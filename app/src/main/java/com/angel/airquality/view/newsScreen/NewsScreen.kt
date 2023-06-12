@@ -1,5 +1,6 @@
 package com.angel.airquality.view.newsScreen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.angel.airquality.GlobalVars
 import com.angel.airquality.MainActivity
@@ -20,8 +22,9 @@ fun NewsScreen(context: MainActivity, innerPadding: PaddingValues) {
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .background(color = Color(0xFFEAF8FF))
             .padding(innerPadding)
+            .fillMaxSize()
     ) {
         //En este punto conectariamos con el viewModel para consultar a la API
         //newsViewModel.searchPollutionNews(context)

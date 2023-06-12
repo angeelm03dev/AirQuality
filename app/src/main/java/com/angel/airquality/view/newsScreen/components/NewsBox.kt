@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -26,13 +27,12 @@ fun NewsBox(
     published_at: String?,
     url: String?
 ) {
-
     Column(
         modifier = Modifier
-            .padding(vertical = 10.dp, horizontal = 15.dp)
-            .clip(MaterialTheme.shapes.medium)
-            .background(color = Color.LightGray)
-            .wrapContentHeight()
+            .padding(10.dp)
+            .clip(RoundedCornerShape(15.dp))
+            .background(color = Color(0xFFE4CCA7))
+            .fillMaxWidth()
     ) {
         ImageNew(image)
         Column(modifier = Modifier.padding(12.dp)) {

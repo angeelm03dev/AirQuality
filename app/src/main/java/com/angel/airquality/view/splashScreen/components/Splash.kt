@@ -31,7 +31,7 @@ fun Splash(){
             Image(
                 painter = painterResource(R.drawable.logo_airquality),
                 contentDescription = null,
-                modifier = Modifier.size(200.dp),
+                modifier = Modifier.size(250.dp),
                 contentScale = ContentScale.Fit
             )
         }

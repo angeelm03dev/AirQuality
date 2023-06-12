@@ -1,6 +1,7 @@
 package com.angel.airquality.viewModel
 
 import android.util.Log
+import androidx.compose.runtime.MutableState
 import androidx.lifecycle.ViewModel
 import com.angel.airquality.GlobalVars
 import com.angel.airquality.MainActivity
@@ -33,12 +34,12 @@ class ExternalSensorsViewModel : ViewModel() {
     fun searchAirQualityLocations(
         context: MainActivity,
         externalSensorsViewModel: ExternalSensorsViewModel,
-        locationStatusAirQualityList: MutableList<LocationStatusAirQuality>,
-    ) {
+        loader: MutableState<Boolean>
+    ){
         //Obtenemos las localizaciones activadas
         val locationsMap = GlobalVars.locationsMapList
 
-        locationStatusAirQualityList.clear()
+        GlobalVars.locationStatusAirQualitylist.clear()
         try {
             CoroutineScope(Dispatchers.IO).launch {
                 val locations = GlobalVars.db.userDao().activeLocations()
@@ -52,12 +53,13 @@ class ExternalSensorsViewModel : ViewModel() {
 
                     context.runOnUiThread {
                         if (statusAirQuality != null) {
-                            locationStatusAirQualityList.add(LocationStatusAirQuality(location,
+                            GlobalVars.locationStatusAirQualitylist.add(LocationStatusAirQuality(location,
                                 locationsMap[location]!!, statusAirQuality))
                         }
                         externalSensorsViewModel.loadLocationMap()
                     }
                 }
+                loader.value = false
             }
         } catch (ex: Exception) {
             Log.e(

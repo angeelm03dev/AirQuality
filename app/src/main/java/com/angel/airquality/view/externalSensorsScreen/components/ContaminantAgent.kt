@@ -19,7 +19,7 @@ fun ContaminantAgent(type: String, value: Float, modifier: Modifier) {
         Text(type, modifier = Modifier.align(Alignment.CenterHorizontally))
 
         val alertLevelColor = when(value){
-            in 0.0..50.0 -> Color(0xFF009866)
+            in 0.0..50.0 -> Color(0xFF43A047)
             in 51.0..100.0 -> Color(0xFFFEDD33)
             in 101.0..150.0 -> Color(0xFFFE9833)
             in 151.0..200.0 -> Color(0xFFCB0033)
