@@ -24,7 +24,6 @@ fun SplashScreen(context: MainActivity, navController: NavController){
                 .createFromAsset("database/db_airquality.db")
                 .build()
         }
-
         try{
             splashViewModel.loadLocationMap(context, navController)
         }catch (e: Exception){

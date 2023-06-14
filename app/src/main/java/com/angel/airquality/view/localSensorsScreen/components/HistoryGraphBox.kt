@@ -16,45 +16,17 @@ import me.bytebeats.views.charts.line.render.yaxis.SimpleYAxisDrawer
 
 
 @Composable
-fun HistoryGraphBox(modifier: Modifier) {
+fun HistoryGraphBox(points: LineChartData, modifier: Modifier) {
     Box(modifier = modifier){
         LineChart(
-            lineChartData = LineChartData(
-                points = listOf(
-                    LineChartData.Point(20F, "00h"),
-                    LineChartData.Point(15F, "01h"),
-                    LineChartData.Point(15F, "02h"),
-                    LineChartData.Point(15F, "03h"),
-                    LineChartData.Point(5F, "04h"),
-                    LineChartData.Point(15F, "05h"),
-                    LineChartData.Point(35F, "06h"),
-                    LineChartData.Point(12F, "07h"),
-                    LineChartData.Point(20F, "08h"),
-                    LineChartData.Point(89F, "09h"),
-                    LineChartData.Point(22F, "10h"),
-                    LineChartData.Point(15F, "11h"),
-                    LineChartData.Point(25F, "12h"),
-                    LineChartData.Point(15F, "13h"),
-                    LineChartData.Point(20F, "14h"),
-                    LineChartData.Point(12F, "15h"),
-                    LineChartData.Point(19F, "16h"),
-                    LineChartData.Point(15F, "17h"),
-                    LineChartData.Point(59F, "18h"),
-                    LineChartData.Point(15F, "19h"),
-                    LineChartData.Point(100F, "20h"),
-                    LineChartData.Point(15F, "21h"),
-                    LineChartData.Point(20F, "22h"),
-                    LineChartData.Point(15F, "23h"),
-                )
-            ),
-            // Optional properties.
+            lineChartData = points,
             modifier = Modifier.fillMaxSize(),
             animation = TweenSpec(durationMillis = 1000),
             pointDrawer = FilledCircularPointDrawer(diameter = 0.dp),
             lineDrawer = SolidLineDrawer(thickness = 3.dp, color = Color(0xFF406E91)),
             xAxisDrawer = SimpleXAxisDrawer(axisLineThickness = 2.dp, drawLabelEvery = 2),
             yAxisDrawer = SimpleYAxisDrawer(axisLineThickness = 2.dp, drawLabelEvery = 2),
-            horizontalOffset = 1f
+            horizontalOffset = 1f,
         )
     }
 }

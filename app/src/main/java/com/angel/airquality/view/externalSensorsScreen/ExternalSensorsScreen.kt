@@ -86,43 +86,29 @@ fun ExternalSensorsScreen(
                 }
             }
             Row(modifier = Modifier.align(Alignment.BottomEnd)) {
-                RoundFloatingButton(
-                    imageVector = Icons.Default.Refresh,
-                    onClick = {
-                        if (GlobalVars.locationStatusAirQualitylist.size == GlobalVars.activeLocation.size) {
-                            /*externalSensorsViewModel.searchAirQualityLocations(
+                if (!loader.value){
+                    RoundFloatingButton(
+                        imageVector = Icons.Default.Refresh,
+                        onClick = {
+                            loader.value = true
+                            externalSensorsViewModel.searchAirQualityLocations(
                                 externalSensorsViewModel = externalSensorsViewModel,
+                                loader = loader,
                                 context = context
-                            )*/
-                        } else {
-                            Toast.makeText(
-                                context,
-                                "Los datos se están actualizando",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    },
-                    modifier = Modifier
-                        .padding(bottom = 20.dp, start = 10.dp, end = 5.dp)
-                )
-                RoundFloatingButton(
-                    imageVector = Icons.Default.Edit,
-                    onClick = {
-                        GlobalVars.activeLocation = GlobalVars.db.userDao().activeLocations()
-
-                        if (GlobalVars.locationStatusAirQualitylist.size == GlobalVars.activeLocation.size) {
+                            )
+                        },
+                        modifier = Modifier
+                            .padding(bottom = 20.dp, start = 10.dp, end = 5.dp)
+                    )
+                    RoundFloatingButton(
+                        imageVector = Icons.Default.Edit,
+                        onClick = {
                             openDialog.value = !openDialog.value
-                        } else {
-                            Toast.makeText(
-                                context,
-                                "Cargando localizaciones. Espere un momento antes de poder editar",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    },
-                    modifier = Modifier
-                        .padding(bottom = 20.dp, start = 5.dp, end = 10.dp)
-                )
+                        },
+                        modifier = Modifier
+                            .padding(bottom = 20.dp, start = 5.dp, end = 10.dp)
+                    )
+                }
             }
 
         }

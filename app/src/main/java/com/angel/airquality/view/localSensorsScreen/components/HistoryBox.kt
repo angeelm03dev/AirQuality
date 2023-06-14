@@ -18,9 +18,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.angel.airquality.viewModel.LocalSensorsViewModel
+import me.bytebeats.views.charts.line.LineChartData
 
 @Composable
-fun HistoryBox(localSensorsViewModel: LocalSensorsViewModel, pollutionValue: MutableState<Int>) {
+fun HistoryBox(points: MutableState<LineChartData>, localSensorsViewModel: LocalSensorsViewModel, pollutionValue: Int) {
+
     Column(
         verticalArrangement = Arrangement.Bottom
     ) {
@@ -40,6 +42,7 @@ fun HistoryBox(localSensorsViewModel: LocalSensorsViewModel, pollutionValue: Mut
             modifier = Modifier.fillMaxWidth()
         ) {
             HistoryGraphBox(
+                points = points.value,
                 modifier = Modifier
                     .height(300.dp)
                     .padding(10.dp)

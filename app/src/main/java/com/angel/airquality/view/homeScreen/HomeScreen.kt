@@ -92,7 +92,7 @@ fun HomeScreen(context: MainActivity, screensNavController: NavHostController) {
     ) { innerPadding ->
         when (GlobalVars.currentScreen.value) {
             is Screen.LocalSensors -> {
-                LocalSensorsScreen(innerPadding)
+                LocalSensorsScreen(context = context, innerPadding = innerPadding)
             }
 
             is Screen.ExternalSensors -> {

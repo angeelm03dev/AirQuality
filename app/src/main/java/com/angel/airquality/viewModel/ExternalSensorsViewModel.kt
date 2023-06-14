@@ -84,6 +84,7 @@ class ExternalSensorsViewModel : ViewModel() {
 
     fun updateIsActive(location: String, isActive: Int){
         CoroutineScope(Dispatchers.IO).launch {
+            GlobalVars.locationsMapList[location] = isActive
             val locationDao = GlobalVars.db.userDao()
             locationDao.updateLocation(location = location, isActive = isActive)
         }

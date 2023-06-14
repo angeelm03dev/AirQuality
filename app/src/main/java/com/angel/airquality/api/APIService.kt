@@ -2,6 +2,8 @@ package com.angel.airquality.api
 
 import com.angel.airquality.model.news.NewsData
 import com.angel.airquality.model.airQualityOpenData.StatusAirQuality
+import com.angel.airquality.model.firebaseRealtime.Sensor
+import com.google.gson.annotations.SerializedName
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -20,4 +22,7 @@ interface APIService {
         @Path("city") city: String,
         @Query("token") token: String
     ): Call<StatusAirQuality>
+
+    @GET("/sensor.json")
+    fun getSensor(): Call<Sensor>
 }
