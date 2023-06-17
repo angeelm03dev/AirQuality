@@ -8,30 +8,32 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.angel.airquality.R
 import com.angel.airquality.model.firebaseRealtime.Sensor
 import com.angel.airquality.viewModel.LocalSensorsViewModel
 
 
 @Composable
-fun DataExplanation(localSensorsViewModel: LocalSensorsViewModel, sensor: MutableState<Sensor>) {
+fun DataExplanation(sensor: MutableState<Sensor>) {
 
     val titleText = when (sensor.value.value) {
-        in 0..799 -> "Calidad buena ✅"
-        in 800..1799 -> "Calidad regular ⚠️"
+        in 0..799 -> stringResource(R.string.good_quality_title)
+        in 800..1799 -> stringResource(R.string.regular_quality_title)
         else -> {
-            "Calidad mala 🚩"
+            stringResource(R.string.poor_quality_title)
         }
     }
 
     val descriptionText = when (sensor.value.value) {
-        in 0..799 -> "No debería haber peligro para la salud."
-        in 800..1799 -> "Las personas con ciertas patologías podrían verse afectadas."
+        in 0..799 -> stringResource(R.string.good_quality_description)
+        in 800..1799 -> stringResource(R.string.regular_quality_description)
         else -> {
-            "Ventile la zona donde se encuentra el sensor. Es posible que haya gases tóxicos en el área."
+            stringResource(R.string.poor_quality_description)
         }
     }
 

@@ -2,9 +2,12 @@ package com.angel.airquality.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
-val Blue = Color(0xFF0077DA)
 val OffBlue = Color(0xFF378CD3)
+val LightBlue = Color(0xFFEAF8FF)
+val LightBeige = Color(0xFFE4CCA7)
+val LightGrey = Color(0xFFE7E7E7)
+
+val Dark = Color(0xFF2C2F2B)
+val DarkBlue = Color(0xFF2C4D69)
+val DarkBeige = Color(0x9C9C5905)
+val DarkGrey = Color(0xFF4E505A)

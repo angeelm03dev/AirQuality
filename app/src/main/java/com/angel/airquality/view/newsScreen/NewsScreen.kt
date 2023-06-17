@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -16,19 +17,13 @@ import com.angel.airquality.view.newsScreen.components.NewsBox
 import com.angel.airquality.viewModel.NewsViewModel
 
 @Composable
-fun NewsScreen(context: MainActivity, innerPadding: PaddingValues) {
-
-    val newsViewModel = viewModel<NewsViewModel>()
-
+fun NewsScreen(innerPadding: PaddingValues) {
     Column(
         modifier = Modifier
-            .background(color = Color(0xFFEAF8FF))
+            .background(color = MaterialTheme.colors.primaryVariant)
             .padding(innerPadding)
             .fillMaxSize()
     ) {
-        //En este punto conectariamos con el viewModel para consultar a la API
-        //newsViewModel.searchPollutionNews(context)
-
         LazyColumn {
             GlobalVars.pollutionNews.forEach {
                 item {

@@ -13,6 +13,9 @@ interface AirQualityDao {
 
     @Query("UPDATE locations SET isActive = :isActive WHERE location = :location")
     fun updateLocation(location: String, isActive: Int)
+
+    @Query("UPDATE locations SET isActive = 0")
+    fun resetLocations()
 }
 
 data class LocationData(

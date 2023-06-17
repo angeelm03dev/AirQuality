@@ -44,7 +44,7 @@ fun DataViewer(
                 .fillMaxHeight()
         ) {
             localSensorsViewModel.getSensor(context = context, sensor = sensor)
-            Text(sensor.value.value.toString(), modifier = Modifier.align(Alignment.Center))
+            Text(sensor.value.value.toString() + " Ω", modifier = Modifier.align(Alignment.Center))
         }
         Text(text = sensor.value.time, textAlign = TextAlign.Center)
         Text(text = sensor.value.data, textAlign = TextAlign.Center)

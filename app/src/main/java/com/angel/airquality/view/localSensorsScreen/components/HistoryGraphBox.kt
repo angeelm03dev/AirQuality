@@ -14,10 +14,9 @@ import me.bytebeats.views.charts.line.render.point.FilledCircularPointDrawer
 import me.bytebeats.views.charts.line.render.xaxis.SimpleXAxisDrawer
 import me.bytebeats.views.charts.line.render.yaxis.SimpleYAxisDrawer
 
-
 @Composable
 fun HistoryGraphBox(points: LineChartData, modifier: Modifier) {
-    Box(modifier = modifier){
+    Box(modifier = modifier) {
         LineChart(
             lineChartData = points,
             modifier = Modifier.fillMaxSize(),

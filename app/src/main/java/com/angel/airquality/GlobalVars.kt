@@ -21,6 +21,7 @@ object GlobalVars {
     //External Sensor
     var locationStatusAirQualitylist = mutableStateListOf<LocationStatusAirQuality>()
     var locationsMapList = mutableStateMapOf<String, Int>()
+    val locations = mutableStateListOf<String>()
 
     //Local Sensor
     val sensor = mutableStateOf(Sensor("", "", "", 1400))

@@ -31,7 +31,7 @@ fun NewsBox(
         modifier = Modifier
             .padding(10.dp)
             .clip(RoundedCornerShape(15.dp))
-            .background(color = Color(0xFFE4CCA7))
+            .background(color = MaterialTheme.colors.secondary)
             .fillMaxWidth()
     ) {
         ImageNew(image)

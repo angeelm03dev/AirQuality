@@ -29,7 +29,7 @@ fun SplashScreen(context: MainActivity, navController: NavController){
         }catch (e: Exception){
             Log.e("ERROR", e.toString())
         }
-        //splashViewModel.searchPollutionNews(context = context)
+        splashViewModel.searchPollutionNews(context = context)
     }
     Splash()
 }

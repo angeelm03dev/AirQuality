@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -47,7 +48,7 @@ fun HomeScreen(context: MainActivity, screensNavController: NavHostController) {
                         )
                     },
                     onClick = { GlobalVars.currentScreen.value = Screen.LocalSensors },
-                    label = { Text("Local") }
+                    label = { Text(stringResource(R.string.local)) }
                 )
                 BottomNavigationItem(
                     selected = GlobalVars.currentScreen.value == Screen.ExternalSensors,
@@ -59,7 +60,7 @@ fun HomeScreen(context: MainActivity, screensNavController: NavHostController) {
                         )
                     },
                     onClick = { GlobalVars.currentScreen.value = Screen.ExternalSensors },
-                    label = { Text("External") }
+                    label = { Text(stringResource(R.string.external)) }
                 )
                 BottomNavigationItem(
                     selected = GlobalVars.currentScreen.value == Screen.NewsSensors,
@@ -71,30 +72,25 @@ fun HomeScreen(context: MainActivity, screensNavController: NavHostController) {
                         )
                     },
                     onClick = { GlobalVars.currentScreen.value = Screen.NewsSensors },
-                    label = { Text("News") }
+                    label = { Text(stringResource(R.string.news)) }
                 )
             }
         },
         topBar = {
             MyTopAppBar(
-                scope,
-                scaffoldState,
+                scope = scope,
+                scaffoldState = scaffoldState,
                 currentScreen = GlobalVars.currentScreen.value
             )
         },
         drawerContent = {
-            Drawer(
-                scope,
-                scaffoldState,
-                screensNavController
-            )
+            Drawer(navController = screensNavController)
         }
     ) { innerPadding ->
         when (GlobalVars.currentScreen.value) {
             is Screen.LocalSensors -> {
                 LocalSensorsScreen(context = context, innerPadding = innerPadding)
             }
-
             is Screen.ExternalSensors -> {
                 ExternalSensorsScreen(
                     context = context,
@@ -102,9 +98,8 @@ fun HomeScreen(context: MainActivity, screensNavController: NavHostController) {
                     innerPadding = innerPadding
                 )
             }
-
             is Screen.NewsSensors -> {
-                NewsScreen(context, innerPadding)
+                NewsScreen(innerPadding = innerPadding)
             }
         }
     }

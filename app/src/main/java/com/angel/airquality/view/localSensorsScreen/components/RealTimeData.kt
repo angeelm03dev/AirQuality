@@ -15,11 +15,15 @@ fun RealTimeData(
     localSensorsViewModel: LocalSensorsViewModel,
     modifier: Modifier,
     sensor: MutableState<Sensor>
-){
+) {
     Column(modifier = modifier) {
         Row {
-            DataViewer(context = context, sensor = sensor, localSensorsViewModel = localSensorsViewModel)
-            DataExplanation(sensor = sensor, localSensorsViewModel = localSensorsViewModel)
+            DataViewer(
+                context = context,
+                sensor = sensor,
+                localSensorsViewModel = localSensorsViewModel
+            )
+            DataExplanation(sensor = sensor)
         }
     }
 }

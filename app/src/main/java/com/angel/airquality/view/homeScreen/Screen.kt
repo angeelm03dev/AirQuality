@@ -1,7 +1,9 @@
 package com.angel.airquality.view.homeScreen
 
-sealed class Screen(val title: String) {
-    object LocalSensors : Screen("Local Sensors")
-    object ExternalSensors : Screen("External Sensors")
-    object NewsSensors : Screen("News")
+import com.angel.airquality.R
+
+sealed class Screen(val title: Int) {
+    object LocalSensors : Screen(R.string.local_screen_title)
+    object ExternalSensors : Screen(R.string.external_screen_title)
+    object NewsSensors : Screen(R.string.news_screen_title)
 }
