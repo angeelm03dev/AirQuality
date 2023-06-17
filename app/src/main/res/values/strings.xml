@@ -1,5 +1,57 @@
 <resources>
     <string name="app_name">AirQuality</string>
 
-    <string name="api_key">a9b860f979eaae7adbf76bcdb7bdb683</string>
+    <!-- API Keys -->
+    <string name="api_news_key" translatable="false">1d64bac39bb42cd54746bc7046419812</string>
+
+    <!-- SettingsScreen -->
+    <string name="settings_screen_title">Setings</string>
+    <string name="delete_btn">Delete data</string>
+    <string name="description_delete_data">Clear app data. All selected sensors will be deleted.</string>
+
+
+    <!-- InfoScreen -->
+    <string name="info_screen_title">Info</string>
+    <!-- Texts -->
+    <string name="first_text_info">With AirQuality you can check the air quality in your home or workplace thanks to the MQ135 sensor connected to your ESP32. Its installation is very simple and hardly requires maintenance. Contact the technical service to get your local air quality sensor ;)</string>
+    <string name="second_text_info">In addition, in the external sensors section you can customize your preferred locations to check the air quality throughout Spain, with detailed and precise data.</string>
+    <string name="third_text_info">Finally, in the third section you will have the latest news related to the environment, so that you are up to date.</string>
+    <string name="fourth_text_info">Application developed by: Ángel Moreno Muñoz</string>
+    <string name="fifth_text_info" translatable="false">I.E.S. Politécnico Jesús Marín</string>
+
+    <!-- HomeScreen -->
+    <!-- BottonAppBar -->
+    <string name="local">Local</string>
+    <string name="external">External</string>
+    <string name="news">News</string>
+    <!-- Titles -->
+    <string name="local_screen_title">Local Sensors</string>
+    <string name="external_screen_title">External Sensors</string>
+    <string name="news_screen_title">News</string>
+    <!-- Drawer -->
+    <string name="setings_btn">Settings</string>
+    <string name="info_btn">Info</string>
+
+
+    <!-- LocalSensorsScreen -->
+    <!-- Titles -->
+    <string name="good_quality_title">Good quality ✅</string>
+    <string name="regular_quality_title">Regular qualiy ⚠️</string>
+    <string name="poor_quality_title">Poor qualiy 🚩️</string>
+    <!-- Descriptions -->
+    <string name="good_quality_description">There should be no health hazard</string>
+    <string name="regular_quality_description">People with certain pathologies could be affected</string>
+    <string name="poor_quality_description">Ventilate the area where the sensor is located. There may be toxic gases in the area</string>
+    <!-- HistoryBox -->
+    <string name="historical_data">Historical data</string>
+
+    <!-- ExternalSensorScreen -->
+    <string name="ica_unit_text">Unit: ICA</string>
+
+    <!-- Toast -->
+    <string name="loading">loading…</string>
+
+    <!-- HomeScreen -->
+    <!-- EditDialog -->
+    <string name="back_btn">Back</string>
 </resources>

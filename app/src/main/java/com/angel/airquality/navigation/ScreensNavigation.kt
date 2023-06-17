@@ -15,10 +15,10 @@ fun ScreensNavigation(context: MainActivity, navController: NavHostController){
 
     NavHost(navController = navController, startDestination = AppScreens.Splash.ruta){
         composable(AppScreens.Splash.ruta){
-            SplashScreen(navController)
+            SplashScreen(context = context, navController = navController)
         }
         composable(AppScreens.Setting.ruta){
-            SettingScreen(navController)
+            SettingScreen(context = context, navController = navController)
         }
         composable(AppScreens.Info.ruta){
             InfoScreen(navController)

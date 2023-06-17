@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AirQuality</string>
+
+    <!-- SettingsScreen -->
+    <string name="settings_screen_title">Ajustes</string>
+    <string name="delete_btn">Borrar datos</string>
+    <string name="description_delete_data">Borrar datos de la aplicación. Todos los sensores seleccionados se borraran.</string>
+
+
+    <!-- InfoScreen -->
+    <string name="info_screen_title">Información</string>
+    <!-- Texts -->
+    <string name="first_text_info">Con AirQuality podrás consultar la calidad del aire en tu casa o lugar de trabajo gracias al sensor MQ135 conectado a tu ESP32. Su instalacción es muy sencilla y apenas requiere mantenimiento. Contacte con el servicio tecnico para conseguir su sensor de calidad de aire local ;)</string>
+    <string name="second_text_info">Además, en el apartado de sensores externos podras personalizar tus localizaciones preferidas para consultarlas la calidad del aire a lo largo de España, con datos detallados y precisos.</string>
+    <string name="third_text_info">Por último, en el tercer apartado dispondrás de las últimas noticias relacionadas con el medio ambiente, para que estes al día.</string>
+    <string name="fourth_text_info">Aplicación desarrollada por: Ángel Moreno Muñoz</string>
+
+
+    <!-- HomeScreen -->
+    <!-- BottonAppBar -->
+    <string name="local">Local</string>
+    <string name="external">Externos</string>
+    <string name="news">Noticias</string>
+    <!-- Titles -->
+    <string name="local_screen_title">Sensor Local</string>
+    <string name="external_screen_title">Sensores Externos</string>
+    <string name="news_screen_title">Noticias</string>
+    <!-- Drawer -->
+    <string name="setings_btn">Ajustes</string>
+    <string name="info_btn">Información</string>
+    <!-- EditDialog -->
+    <string name="back_btn">Volver</string>
+
+
+    <!-- LocalSensorsScreen -->
+    <!-- Titles -->
+    <string name="good_quality_title">Buena calidad ✅</string>
+    <string name="regular_quality_title">Calidad regular ⚠️</string>
+    <string name="poor_quality_title">Mala calidad 🚩️</string>
+    <!-- Descriptions -->
+    <string name="good_quality_description">No debería haber peligro para la salud</string>
+    <string name="regular_quality_description">Las personas con ciertas patologías podrían verse afectadas</string>
+    <string name="poor_quality_description">Ventile la zona donde se encuentra el sensor. Es posible que haya gases tóxicos en el área</string>
+    <!-- HistoryBox -->
+    <string name="historical_data">Histórico de datos</string>
+
+
+    <!-- ExternalSensorScreen -->
+    <string name="ica_unit_text">Unidad: ICA</string>
+
+
+    <!-- Toast -->
+    <string name="loading">cargando…</string>
+</resources>

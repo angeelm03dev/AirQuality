@@ -1,34 +1,45 @@
 package com.angel.airquality.view.homeScreen
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.BottomAppBar
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.rememberScaffoldState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.angel.airquality.GlobalVars
 import com.angel.airquality.MainActivity
 import com.angel.airquality.R
 import com.angel.airquality.view.externalSensorsScreen.ExternalSensorsScreen
+import com.angel.airquality.view.homeScreen.components.Drawer
+import com.angel.airquality.view.homeScreen.components.MyTopAppBar
 import com.angel.airquality.view.localSensorsScreen.LocalSensorsScreen
 import com.angel.airquality.view.newsScreen.NewsScreen
+import com.angel.airquality.viewModel.ExternalSensorsViewModel
 
 @Composable
 fun HomeScreen(context: MainActivity, screensNavController: NavHostController) {
-    var screen: Screen = Screen.LocalSensors
-    var currentScreen by remember { mutableStateOf(screen) }
-
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
+
+    val externalSensorsViewModel = viewModel<ExternalSensorsViewModel>()
 
     Scaffold(
         scaffoldState = scaffoldState,
         bottomBar = {
             BottomAppBar {
                 BottomNavigationItem(
-                    selected = currentScreen == Screen.LocalSensors,
+                    selected = GlobalVars.currentScreen.value == Screen.LocalSensors,
                     icon = {
                         Icon(
                             imageVector = Icons.Filled.Home,
@@ -36,11 +47,11 @@ fun HomeScreen(context: MainActivity, screensNavController: NavHostController) {
                             modifier = Modifier.size(24.dp)
                         )
                     },
-                    onClick = { currentScreen = Screen.LocalSensors },
-                    label = { Text("Local") }
+                    onClick = { GlobalVars.currentScreen.value = Screen.LocalSensors },
+                    label = { Text(stringResource(R.string.local)) }
                 )
                 BottomNavigationItem(
-                    selected = currentScreen == Screen.ExternalSensors,
+                    selected = GlobalVars.currentScreen.value == Screen.ExternalSensors,
                     icon = {
                         Icon(
                             painterResource(R.drawable.location_city),
@@ -48,11 +59,11 @@ fun HomeScreen(context: MainActivity, screensNavController: NavHostController) {
                             modifier = Modifier.size(24.dp)
                         )
                     },
-                    onClick = { currentScreen = Screen.ExternalSensors },
-                    label = { Text("External") }
+                    onClick = { GlobalVars.currentScreen.value = Screen.ExternalSensors },
+                    label = { Text(stringResource(R.string.external)) }
                 )
                 BottomNavigationItem(
-                    selected = currentScreen == Screen.NewsSensors,
+                    selected = GlobalVars.currentScreen.value == Screen.NewsSensors,
                     icon = {
                         Icon(
                             painterResource(R.drawable.newspaper),
@@ -60,34 +71,36 @@ fun HomeScreen(context: MainActivity, screensNavController: NavHostController) {
                             modifier = Modifier.size(24.dp)
                         )
                     },
-                    onClick = { currentScreen = Screen.NewsSensors },
-                    label = { Text("News") }
+                    onClick = { GlobalVars.currentScreen.value = Screen.NewsSensors },
+                    label = { Text(stringResource(R.string.news)) }
                 )
             }
         },
-        topBar = { MyTopAppBar(scope, scaffoldState, title = currentScreen.title) },
-        drawerContent = {
-            Drawer(
-                scope,
-                scaffoldState,
-                screensNavController
+        topBar = {
+            MyTopAppBar(
+                scope = scope,
+                scaffoldState = scaffoldState,
+                currentScreen = GlobalVars.currentScreen.value
             )
+        },
+        drawerContent = {
+            Drawer(navController = screensNavController)
         }
     ) { innerPadding ->
-        when (currentScreen) {
+        when (GlobalVars.currentScreen.value) {
             is Screen.LocalSensors -> {
-                LocalSensorsScreen(innerPadding)
+                LocalSensorsScreen(context = context, innerPadding = innerPadding)
             }
-
             is Screen.ExternalSensors -> {
-                ExternalSensorsScreen(innerPadding)
+                ExternalSensorsScreen(
+                    context = context,
+                    externalSensorsViewModel,
+                    innerPadding = innerPadding
+                )
             }
-
             is Screen.NewsSensors -> {
-                NewsScreen(context, innerPadding)
+                NewsScreen(innerPadding = innerPadding)
             }
-
-            else -> {}
         }
     }
 
